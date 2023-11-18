@@ -299,7 +299,20 @@ function client.openInventory(inv, data)
 			if invOpen == false then lib.notify({ id = 'inventory_right_access', type = 'error', description = locale('inventory_right_access') }) end
 			if invOpen then client.closeInventory() end
 		end
-	else lib.notify({ id = 'inventory_player_access', type = 'error', description = locale('inventory_player_access') }) end
+	else lib.notify({
+		title = 'INVENTORY',
+		description = 'Et voi käyttää tätä enää',
+		position = 'top',
+		style = {
+			backgroundColor = '#141517',
+			color = '#C1C2C5',
+			['.description'] = {
+			  color = '#909296'
+			}
+		},
+		icon = 'fas fa-box-open',
+		iconColor = '#C53030'
+	})end
 end
 
 RegisterNetEvent('ox_inventory:openInventory', client.openInventory)
@@ -370,8 +383,9 @@ lib.callback.register('ox_inventory:usingItem', function(data)
 			item.disable.combat = true
 		end
 
-		local success = (not item.usetime or lib.progressBar({
+		local success = (not item.usetime or lib.progressCircle({
 			duration = item.usetime,
+			position = 'bottom',
 			label = item.label or locale('using', data.metadata.label or data.label),
 			useWhileDead = item.useWhileDead,
 			canCancel = item.cancel,
@@ -783,18 +797,22 @@ local function registerCommands()
 		defaultKey = 'r',
 		onPressed = function(self)
 			if not currentWeapon or not canUseItem(true) then return end
+			
 
 			if currentWeapon.ammo then
 				if currentWeapon.metadata.durability > 0 then
 					local slotId = Inventory.GetSlotIdWithItem(currentWeapon.ammo, { type = currentWeapon.metadata.specialAmmo }, false)
+					
 
 					if slotId then
 						useSlot(slotId)
+						
 					end
 				else
 					lib.notify({ id = 'no_durability', type = 'error', description = locale('no_durability', currentWeapon.label) })
 				end
 			end
+			
 		end
 	})
 
@@ -1058,6 +1076,8 @@ RegisterNetEvent('ox_inventory:removeDrop', function(dropId)
 	end
 end)
 
+local uiLoaded = false
+
 ---@type function?
 local function setStateBagHandler(stateId)
 	AddStateBagChangeHandler('invOpen', stateId, function(_, _, value)
@@ -1249,7 +1269,7 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 		})
 	end
 
-	while not client.uiLoaded do Wait(50) end
+	while not uiLoaded do Wait(50) end
 
 	SendNUIMessage({
 		action = 'init',
@@ -1268,7 +1288,20 @@ RegisterNetEvent('ox_inventory:setPlayerInventory', function(currentDrops, inven
 
 	PlayerData.loaded = true
 
-	lib.notify({ description = locale('inventory_setup') })
+	lib.notify({
+		title = 'INVENTORY',
+		description = 'Inventory on ladattu',
+		position = 'top',
+		style = {
+			backgroundColor = '#141517',
+			color = '#C1C2C5',
+			['.description'] = {
+			  color = '#909296'
+			}
+		},
+		icon = 'fas fa-box-open',
+		iconColor = '#C53030'
+	})
 	Shops.refreshShops()
 	Inventory.Stashes()
 	Inventory.Evidence()
@@ -1513,7 +1546,7 @@ RegisterNetEvent('ox_inventory:viewInventory', function(data)
 end)
 
 RegisterNUICallback('uiLoaded', function(_, cb)
-	client.uiLoaded = true
+	uiLoaded = true
 	cb(1)
 end)
 

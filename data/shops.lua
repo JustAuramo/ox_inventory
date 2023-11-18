@@ -105,23 +105,25 @@ return {
 	},
 
 	PoliceArmoury = {
-		name = 'Police Armoury',
+		name = 'Poliisi',
 		groups = shared.police,
 		blip = {
 			id = 110, colour = 84, scale = 0.8
 		}, inventory = {
-			{ name = 'ammo-9', price = 5, },
-			{ name = 'ammo-rifle', price = 5, },
-			{ name = 'WEAPON_FLASHLIGHT', price = 200 },
-			{ name = 'WEAPON_NIGHTSTICK', price = 100 },
-			{ name = 'WEAPON_PISTOL', price = 500, metadata = { registered = true, serial = 'POL' }, license = 'weapon' },
-			{ name = 'WEAPON_CARBINERIFLE', price = 1000, metadata = { registered = true, serial = 'POL' }, license = 'weapon', grade = 3 },
-			{ name = 'WEAPON_STUNGUN', price = 500, metadata = { registered = true, serial = 'POL'} }
+			{ name = 'ammo-9', price = 0, },
+			{ name = 'ammo-rifle', price = 0, },
+			{ name = 'gps', price = 0, },
+			{ name = 'radio', price = 0, },
+			{ name = 'armour', price = 0, },
+			{ name = 'WEAPON_FLASHLIGHT', price = 0 },
+			{ name = 'WEAPON_NIGHTSTICK', price = 0 },
+			{ name = 'WEAPON_COMBATPDW', price = 0 },
 		}, locations = {
-			vec3(451.51, -979.44, 30.68)
+			vec3(482.52, -995.81, 30.69)
 		}, targets = {
 			{ loc = vec3(453.21, -980.03, 30.68), length = 0.5, width = 3.0, heading = 270.0, minZ = 30.5, maxZ = 32.0, distance = 6 }
 		}
+		
 	},
 
 	Medicine = {
