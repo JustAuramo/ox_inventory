@@ -105,6 +105,7 @@ button:active {
   justify-content: center;
   align-items: center;
 }
+/*Inventorin input väri*/
 .inventory-control .inventory-control-input {
   transition: 0.2s;
   padding: 16px 8px;
@@ -115,15 +116,15 @@ button:active {
   outline: none;
   border: none;
   color: #fff;
-  background-color: #22232c;
+  background-color: #24253073;
 }
 .inventory-control .inventory-control-input:focus-within {
-  background-color: #33343f;
+  background-color: #24253073;
 }
 .inventory-control .inventory-control-button {
   font-size: 14px;
   color: #fff;
-  background-color: #22232c;
+  background-color: #242530;
   transition: 0.2s;
   padding: 12px 8px;
   border-radius: 0.5rem;
@@ -134,7 +135,7 @@ button:active {
   font-weight: 500;
 }
 .inventory-control .inventory-control-button:hover {
-  background-color: #33343f;
+  background-color: #242530;
 }
 .useful-controls-dialog {
   background-color: #22232c;
@@ -211,11 +212,12 @@ button:active {
   border-radius: 2.5% !important;
   color: gray !important;
 }
+/* Inventoryn tausta*/
 .inventory-grid-wrapper {
   display: flex;
   flex-direction: column;
   gap: 4px;
-  background-color: #1f2027;
+  background-color: #24253073;
   padding: 0.625rem;
   border-radius: 0.5rem;
 }
@@ -235,10 +237,11 @@ button:active {
   gap: 2px;
   overflow-y: scroll;
 }
+/*Inventory slottien tausta*/
 .inventory-slot,
 .item-notification-item-box,
 .hotbar-item-slot {
-  background-color: #22232c;
+  background-color: #24253073;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 0.5rem;
@@ -324,7 +327,7 @@ button:active {
 .tooltip-wrapper {
   pointer-events: none;
   display: flex;
-  background-color: #22232c;
+  background-color: #101010;
   width: 200px;
   padding: 8px;
   flex-direction: column;
@@ -386,6 +389,7 @@ button:active {
 }
 .hotbar-item-slot {
   width: 10.2vh;
+  background-color: #242530;
   height: 10.2vh;
 }
 .hotbar-slot-header-wrapper {
